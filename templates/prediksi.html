@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet" />
+  <title>Hasil Prediksi</title>
+  <style>
+    * {
+      font-family: "Poppins";
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .card {
+      display: flex;
+      max-width: 600px;
+      border: 2px solid #ccc;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .card img {
+      width: 160px;
+      height: auto;
+      object-fit: fill;
+      padding: 10px;
+      /* background-color: #000000; */
+    }
+
+    .card-content {
+      flex: 1;
+      padding: 20px;
+      /* background-color: rgba(0, 0, 0, 0.4); */
+    }
+
+    .card-content p {
+      font-size: 24px;
+    }
+
+    .back-button {
+      position: absolute;
+      font-size: 18px;
+      top: 10px;
+      left: 10px;
+      background-color: #1ed760;
+      color: #fff;
+      font-weight: 600;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+  <a href="{{ url_for('home') }}"><button class="back-button">Kembali</button></a>
+  <div class="card">
+    <img src="{{url_for('static', filename='spotify.png')}}" alt="Card Image" />
+    <div class="card-content">
+      <h2>Prediksi Jumlah Stream</h2>
+      <p style="font-size: 26px; font-weight: 700">{{ hasil }}</p>
+    </div>
+  </div>
+</body>
+
+</html>

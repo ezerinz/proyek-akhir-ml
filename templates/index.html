@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="Machine Learning" content="width=device-width, initial-scale=1.0" />
+  <title>Machine Learning - Tugas Akhir</title>
+  <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet" />
+  <style>
+    * {
+      font-family: "Poppins";
+    }
+
+    body {
+      display: flex;
+      font-family: Arial, sans-serif;
+      justify-content: center;
+      /* Center the content horizontally */
+      /* align-items: center; */
+      /* Center the content vertically */
+      margin: 20px;
+      padding: 20px;
+      background-color: #f4f4f4;
+    }
+
+    form {
+      max-width: 400px;
+      margin-right: 20px;
+      /* margin: 0 auto; */
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .card {
+      display: table;
+      align-items: center;
+      max-height: 200px;
+      max-width: 30%;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      text-align: justify;
+    }
+
+    .card h2 {
+      padding: 0;
+      margin: 0;
+    }
+
+    .card p {
+      padding: 4px;
+      margin: 0;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 0px;
+    }
+
+    form small {
+      font-size: 12px;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 20px;
+      box-sizing: border-box;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    input[type="submit"] {
+      background-color: #1ed760;
+      color: #fff;
+      font-weight: 600;
+      font-size: 18px;
+      cursor: pointer;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #1ed760;
+    }
+  </style>
+</head>
+
+<body>
+  <form action="{{url_for('predict')}}" method="post">
+    <label for="totalPlaylist">Total Playlist (angka):</label>
+    <small>Jumlah playlist/daftar putar di Spotify yang mencakup lagu.</small>
+    <input type="number" id="total_playlist" name="total_playlist" required />
+
+    <label for="totalCharts">Total Charts (angka):</label>
+    <small>Jumlah charts/tangga lagu di Spotify yang mencakup lagu.</small>
+    <input type="number" id="total_charts" name="total_charts" required />
+
+    <label for="liveness">Liveness (%):</label>
+    <small>Kehadiran elemen pertunjukan langsung dalam rekaman.</small>
+    <input type="number" id="liveness" name="liveness" min="0" max="100" required />
+
+    <label for="energy">Energy (%):</label>
+    <small>Tingkat energi yang dirasakan dalam lagu.</small>
+    <input type="number" id="energy" name="energy" min="0" max="100" required />
+
+    <label for="valence">Valence (%):</label>
+    <small>Positivitas konten musik.</small>
+    <input type="number" id="valence" name="valence" min="0" max="100" required />
+
+    <label for="acousticness">Acousticness (%):</label>
+    <small>Jumlah suara akustik dalam lagu.</small>
+    <input type="number" id="acousticness" name="acousticness" min="0" max="100" required />
+
+    <label for="speechiness">Speechiness (%):</label>
+    <small> Jumlah elemen bicara/rap yang diucapkan dalam lagu.</small>
+    <input type="number" id="speechiness" name="speechiness" min="0" max="100" required />
+
+    <label for="instrumental">Instrumentalness (%):</label>
+    <small>Jumlah konten instrumental dalam lagu.</small>
+    <input type="number" id="instrumental" name="instrumental" min="0" max="100" required />
+
+    <label for="danceability">Danceability (%):</label>
+    <small>Kesesuaian untuk berdansa.</small>
+    <input type="number" id="danceability" name="danceability" min="0" max="100" required />
+
+    <input type="submit" value="Submit" />
+  </form>
+
+  <div class="card">
+    <h2>Informasi Tambahan</h2>
+    <p>Metode: Random Forest Reggresion</p>
+    <p>
+      Sumber Data:
+      <a href="https://www.kaggle.com/datasets/nelgiriyewithana/top-spotify-songs-2023">Kaggle</a>
+    </p>
+
+    <p>
+      Attribut seperti liveness, energy dan lain-lain yang menggunakan persen
+      berdasarkan track attribute yang diekstrak dari Spotify, penjelasan
+      lebih lanjut ada
+      <a href="https://developer.spotify.com/documentation/web-api/reference/get-audio-features">disini</a>
+      dan
+      <a href="https://ahsieh53632.github.io/music-attributes-and-popularity/">disini</a>
+    </p>
+  </div>
+</body>
+
+</html>
